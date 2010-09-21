@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<s:Application xmlns:fx="http://ns.adobe.com/mxml/2009" 
+			   xmlns:s="library://ns.adobe.com/flex/spark" 
+			   xmlns:mx="library://ns.adobe.com/flex/mx">
+
+	<s:layout>
+		<s:VerticalLayout horizontalAlign="center"
+						  verticalAlign="middle" />
+	</s:layout>
+	
+	<s:HGroup>
+		<s:VGroup>
+			<s:Label text="Nome" />
+			<s:TextInput />
+
+			<s:Label text="Email" />
+			<s:TextInput />
+		</s:VGroup>
+
+		<mx:VRule />
+
+		<s:VGroup>
+			<s:Label text="CPF" />
+			<s:TextInput />
+
+			<s:Label text="RG" />
+			<s:TextInput />
+		</s:VGroup>
+	</s:HGroup>
+</s:Application>
