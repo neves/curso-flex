@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<s:Application xmlns:fx="http://ns.adobe.com/mxml/2009" 
+			   xmlns:s="library://ns.adobe.com/flex/spark" 
+			   xmlns:mx="library://ns.adobe.com/flex/mx">
+
+	<s:layout>
+		<s:VerticalLayout horizontalAlign="center" verticalAlign="middle" />
+	</s:layout>
+
+	<s:NumericStepper id="spinner" value="0" maximum="2" />
+
+	<mx:ViewStack id="vs" selectedIndex="{spinner.value}" resizeToContent="true">
+		<mx:Form>
+			<mx:FormItem label="Usuário">
+				<s:TextInput />
+			</mx:FormItem>
+			<mx:FormItem label="Senha">
+				<s:TextInput />
+			</mx:FormItem>
+			<s:HGroup horizontalAlign="right" width="100%">
+				<s:Button click="vs.selectedIndex = 1" label="próximo" />	
+			</s:HGroup>
+		</mx:Form>
+		
+		<mx:Form>
+			<mx:FormItem label="Forma de Pagamento">
+				<s:ComboBox>
+					<s:ArrayCollection>
+						<fx:String>VISA</fx:String>
+						<fx:String>MASTER</fx:String>
+						<fx:String>AMEX</fx:String>
+					</s:ArrayCollection>
+				</s:ComboBox>
+			</mx:FormItem>
+			<s:HGroup horizontalAlign="right" width="100%">
+				<s:Button click="vs.selectedIndex = 0" label="voltar" />
+				<mx:Spacer width="100%" />
+				<s:Button click="vs.selectedIndex = 2" label="concluir" />	
+			</s:HGroup>
+		</mx:Form>
+
+		<mx:Canvas>
+			<s:Label text="Obrigado!" horizontalCenter="0" verticalCenter="0"  />
+		</mx:Canvas>
+	</mx:ViewStack>
+</s:Application>

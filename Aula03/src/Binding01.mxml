@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<s:Application xmlns:fx="http://ns.adobe.com/mxml/2009" 
+			   xmlns:s="library://ns.adobe.com/flex/spark" 
+			   xmlns:mx="library://ns.adobe.com/flex/mx">
+	<fx:Script>
+		<![CDATA[
+			import mx.effects.Fade;
+			import mx.effects.Resize;
+		]]>
+	</fx:Script>
+	
+	<fx:Declarations>
+		<mx:Fade id="conjugeFade" duration="2000" />
+	</fx:Declarations>
+
+	<s:Panel horizontalCenter="0" verticalCenter="0" resizeEffect="{Resize}">
+		<mx:Form>
+			<mx:FormItem label="Nome">
+				<s:TextInput />
+			</mx:FormItem>
+			<mx:FormItem label="Casado?">
+				<s:CheckBox id="casado" />
+			</mx:FormItem>
+			<mx:FormItem id="fiConjuge" label="Conjuge" toolTip="Nome Completo"
+						 visible="{casado.selected}"
+						 hide="conjuge.text = ''"
+						 show="conjuge.setFocus()"
+						 showEffect="{conjugeFade}"
+						 hideEffect="{conjugeFade}">
+				<s:TextInput id="conjuge" />
+			</mx:FormItem>
+			<mx:FormItem label="Senha">
+				<s:TextInput displayAsPassword="true" id="senha" />
+			</mx:FormItem>
+			<mx:FormItem label="Confirmar Senha" direction="vertical">
+				<s:TextInput id="confirmar_senha"
+							 displayAsPassword="true"
+							 borderColor="{senha.text.length >= 6 &amp;&amp;
+							  			   senha.text == confirmar_senha.text
+							 			   ? 0x009900 : 0x990000}" />
+				<s:Label text="Senha não confere!"
+						 showEffect="{Fade}"
+						 hideEffect="{Fade}"
+						 visible="{senha.text != confirmar_senha.text}" />
+			</mx:FormItem>
+		</mx:Form>
+		<s:controlBarContent>
+			<s:Button label="Cadastrar" enabled="{senha.text == confirmar_senha.text}" />
+		</s:controlBarContent>
+	</s:Panel>
+</s:Application>
