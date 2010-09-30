@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<s:Application xmlns:fx="http://ns.adobe.com/mxml/2009" 
+			   xmlns:s="library://ns.adobe.com/flex/spark" 
+			   xmlns:mx="library://ns.adobe.com/flex/mx"
+			   xmlns:controls="forms.controls.*">
+	<fx:Script>
+		<![CDATA[
+			import mx.utils.ObjectUtil;
+			private function exibirPessoa():void
+			{
+				trace( ObjectUtil.toString(pessoa) );
+			}
+		]]>
+	</fx:Script>
+	<fx:Declarations>
+		<fx:Model id="pessoa">
+			<pessoa>
+				<nome>Marcos Neves</nome>
+				<email>marcos.neves@gmail.com</email>
+				<senha>123mudar</senha>
+				<admin>{true}</admin>
+				<sexo>M</sexo>
+				<estado>SP</estado>
+				<estadoCivil>D</estadoCivil>
+			</pessoa>
+		</fx:Model>
+	</fx:Declarations>
+
+	<s:Panel horizontalCenter="0" verticalCenter="0">
+		<mx:Form>
+			<mx:FormItem label="Nome">
+				<s:TextInput text="@{pessoa.nome}" />
+				<s:Label text="{pessoa.nome}" />
+			</mx:FormItem>
+
+			<mx:FormItem label="Email">
+				<s:TextInput text="@{pessoa.email}" />
+			</mx:FormItem>
+
+			<mx:FormItem label="Senha">
+				<controls:Senha text="@{pessoa.senha}" />
+			</mx:FormItem>
+
+			<mx:FormItem label="Admin">
+				<s:CheckBox selected="@{pessoa.admin}" />
+			</mx:FormItem>
+
+			<mx:FormItem label="Sexo">
+				<controls:Sexo value="@{pessoa.sexo}" />
+			</mx:FormItem>
+			<mx:FormItem label="Estado">
+				<s:ComboBox selectedItem="@{pessoa.estado}">
+					<s:ArrayList>
+						<fx:String>PR</fx:String>
+						<fx:String>SP</fx:String>
+						<fx:String>RJ</fx:String>
+					</s:ArrayList>
+				</s:ComboBox>
+			</mx:FormItem>
+			<mx:FormItem label="Estado Civil">
+				<s:ComboBox selectedItem="@{pessoa.estadoCivil}">
+					<s:ArrayList>
+						<fx:Object label="Solteiro" value="S" />
+						<fx:Object label="Casado" value="C" />
+						<fx:Object label="Divorciado" value="D" />
+						<fx:Object label="Viúvo" value="V" />
+					</s:ArrayList>
+				</s:ComboBox>
+			</mx:FormItem>
+		</mx:Form>
+
+		<s:controlBarContent>
+			<mx:Spacer width="100%" />
+			<s:Button label="Salvar" click="exibirPessoa()" />
+		</s:controlBarContent>
+	</s:Panel>
+</s:Application>

@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<s:Application xmlns:fx="http://ns.adobe.com/mxml/2009" 
+			   xmlns:s="library://ns.adobe.com/flex/spark" 
+			   xmlns:mx="library://ns.adobe.com/flex/mx">
+
+	<fx:Script>
+		<![CDATA[
+			[Bindable]
+			private var ufs:ArrayList = new ArrayList(['PR', 'SP', 'RJ']);
+		]]>
+	</fx:Script>
+
+	<fx:Declarations>
+		<s:ArrayList id="estados">
+			<fx:String>PR</fx:String>
+			<fx:String>SP</fx:String>
+			<fx:String>RJ</fx:String>
+		</s:ArrayList>
+
+		<s:ArrayCollection id="ufArrayCollection">
+			<s:source>
+				<fx:String>PR</fx:String>
+				<fx:String>SP</fx:String>
+				<fx:String>RJ</fx:String>	
+			</s:source>
+			<s:sort>
+				<mx:Sort />
+			</s:sort>
+		</s:ArrayCollection>
+	</fx:Declarations>
+
+	<s:layout>
+		<s:VerticalLayout horizontalAlign="center" />
+	</s:layout>
+
+	<s:ComboBox>
+		<s:dataProvider>
+			<s:ArrayList>
+				<fx:String>PR</fx:String>
+				<fx:String>SP</fx:String>
+				<fx:String>RJ</fx:String>
+			</s:ArrayList>
+		</s:dataProvider>
+	</s:ComboBox>
+
+	<s:ComboBox selectedIndex="2">
+		<s:ArrayList>
+			<fx:String>PR</fx:String>
+			<fx:String>SP</fx:String>
+			<fx:String>RJ</fx:String>
+		</s:ArrayList>
+	</s:ComboBox>
+
+	<s:ComboBox requireSelection="true">
+		<s:ArrayCollection>
+			<fx:String>PR</fx:String>
+			<fx:String>SP</fx:String>
+			<fx:String>RJ</fx:String>
+		</s:ArrayCollection>
+	</s:ComboBox>
+
+	<s:ComboBox dataProvider="{estados}" />
+	<s:Label text="{estados.getItemAt(1)}" />
+	<s:ComboBox dataProvider="{ufs}" />
+	<mx:FormItem label="ufArrayCollection">
+		<s:ComboBox>{ufArrayCollection}</s:ComboBox>	
+	</mx:FormItem>
+
+	<s:ComboBox id="ufExtenso" labelField="extenso">
+		<s:ArrayList>
+			<fx:Object sigla="PR" extenso="Paraná" />
+			<fx:Object sigla="SP" extenso="São Paulo" />
+			<fx:Object sigla="RJ" extenso="Rio de Janeiro" />
+		</s:ArrayList>
+	</s:ComboBox>
+	<s:Label text="{ufExtenso.selectedItem.sigla}-{ufExtenso.selectedItem.extenso}" />
+</s:Application>
