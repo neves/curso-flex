@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<s:HGroup xmlns:fx="http://ns.adobe.com/mxml/2009" 
+		  xmlns:s="library://ns.adobe.com/flex/spark" 
+		  xmlns:mx="library://ns.adobe.com/flex/mx">
+	<fx:Declarations>
+		<fx:Object id="value" />
+		<s:RadioButtonGroup id="sexo" selectedValue="@{value}" />
+	</fx:Declarations>
+	<s:RadioButton label="Masculino" value="M" group="{sexo}" />
+	<s:RadioButton label="Feminino" value="F" group="{sexo}" />
+</s:HGroup>
